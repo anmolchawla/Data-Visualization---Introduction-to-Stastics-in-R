@@ -24,7 +24,7 @@ Demonstrate good development practices:
 
 ### Notebook and plots (5 pts)
 
-Refer to **ggplot2-notebook.Rmd** from the lectures for the types of plots to include, i.e., basic statistical plots, faceting, a map with ggmap showing data, and an interactive chart with plotly.
+Refer to *ggplot2-notebook.Rmd* from the lectures for the types of plots to include, i.e., basic statistical plots, faceting, a map with ggmap showing data, and an interactive chart with plotly.
 
 | Quality       | Points | Description |
 | ------------- | ------ | ----------- |
