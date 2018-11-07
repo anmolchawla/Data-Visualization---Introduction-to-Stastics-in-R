@@ -1,0 +1,8 @@
+"0","# GGMAP"
+"0","#circle: Represents the start point, denoted at the start point lat and long UCLA"
+"0","#rectangle: Represents the end point, denoted at the end point lat and long USC"
+"0","bb <- c(left = -125.39, bottom = 31.0, right = -113.5, top = 42.0)"
+"0","stamenmap.ca <- get_stamenmap(bbox = bb, zoom = 6, maptype = ""toner"")"
+"0","USC <- data.frame(label = ""USC"", lon = -120, lat = 35)"
+"0","UCLA <- data.frame(label = ""UCLA"", lon = -118.44, lat = 34.07)"
+"0","ggmap(stamenmap.ca) + geom_point(data = USC, aes(x = -120, y = 35), color=""red"", size=5, alpha=.5) + geom_point(data = UCLA, aes(x = -118, y = 34), shape = 17, color=""red"", size=5, alpha=.5)"

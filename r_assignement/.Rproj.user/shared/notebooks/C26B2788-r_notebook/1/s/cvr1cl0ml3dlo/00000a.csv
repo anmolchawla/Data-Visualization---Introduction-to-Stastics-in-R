@@ -1,0 +1,5 @@
+"0","#Violin Plot"
+"0","#name: The name of the option displayed on the app"
+"0","#Estimate: The cost associated with that option. Range from lowest to highest cost estimate."
+"0","#The shape remains the same as the data is evenly divided at a step of one and also with the same frequeny. "
+"0","ggplot(mydata, aes(name, estimate)) + geom_violin()"

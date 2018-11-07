@@ -1,0 +1,4 @@
+"0","#Box Plot"
+"0","#name: The name of the option displayed on the app"
+"0","#Estimate: The cost associated with that option. Range from lowest to highest cost estimate."
+"0","ggplot(mydata, aes(name, estimate)) + geom_boxplot()"

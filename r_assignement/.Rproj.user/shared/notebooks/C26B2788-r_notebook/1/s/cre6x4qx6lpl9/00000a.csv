@@ -1,0 +1,4 @@
+"0","#bar chart"
+"0","#Display_name = The name that get's displayed to the USer on the Uber App"
+"0","#High_ estimte = The Hoghest Cost estimate that the user can be charged"
+"0","ggplot(df, aes(display_name,high_estimate)) + geom_bar(stat = ""identity"")  #count of models by manufacturer (rows)"

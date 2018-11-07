@@ -1,0 +1,7 @@
+"0","#name: The name of the option displayed on the app"
+"0","#low_estimate: The lowest cost associated with that option."
+"0","#high_estimate: The highest cost associated with that option."
+"0","ggplot(df, aes(high_estimate, low_estimate , color = display_name)) +"
+"0","  geom_point() +"
+"0","  facet_grid(cols=vars(display_name))+"
+"0","  theme(legend.position=""none"")"

@@ -1,0 +1,191 @@
+---
+title: "assignment10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Introduction
+
+The aim of this assignment was to demonstrate the use of basic stastical plots in R. 
+
+The data that was chosen was Uber API data. The start latitude and longitude along with the end Latitude and Longitude was sent to the Uber API. 
+In return UBER API responded with the following fields
+1) Type of UBER's available (Ranging from UBER X, Pool to UBER Lux)
+2) The Highest cost estimate
+3) The Lowest cost estimate
+4) The average cost range estimate
+5) The distance between the two points
+6) The currency of the location
+7) The language of one of the cabs (Espanol)
+
+
+1)Basic Stastical Plots that were included were:
+
+Scatterplot		(Uber name  vs highest cost estimate)
+Text	        	(Uber name  vs highest cost estimate)
+Bar chart		(Uber name  vs highest cost estimate)
+Line chart	(Date vs Probable Cost)
+Area chart  (Date vs Probable Cost)	
+Dot plot		(highest cost estimate)
+Histogram		(highest cost estimate)
+Frequency polygon 	(highest cost estimate)	
+Box plot	        (Uber name  vs Extrapolated cost estimate (eg: 8-10 became 8,9,10))
+Violin plot		(Uber name  vs Extrapolated cost estimate (eg: 8-10 became 8,9,10))
+
+2) A faceted plot	(Uber name  -  highest cost estimate - lowest cost estimate)
+
+3) A ggmap plot		(Start Location and End Location)
+
+4)Plotly bar plot       (Uber name  vs highest cost estimate)
+
+The use of ggplot2, ggmap and plotly was demonstrated in the R studios.
+A copy of the notebook was published at Rpubs (Link: https://rpubs.com/AnmolChawla/assignment10 )
+An R project with a seperate data folder was created and incremnetal git commits were made to ensure good practice.
+Notebook was properly formatted with R Markdown
+
+
+```{r}
+# Basic Plots
+df <- read.csv("C:/Users/anmol/Desktop/INF 554/Homework 10/r_assignement/data/uber.csv")
+mydata <- read.csv("C:/Users/anmol/Desktop/INF 554/Homework 10/r_assignement/data/uber_data1.csv")
+mydata['date']<-as.Date(mydata$date)
+library(ggplot2)
+library(plotly)
+library(ggmap)
+
+```
+
+```{r}
+df
+
+```
+
+```{r}
+
+mydata
+```
+
+Basic Plots
+
+
+```{r}
+#Scatter Plot
+#Display_name = The name that get's displayed to the USer on the Uber App
+#High_ estimte = The Hoghest Cost estimate that the user can be charged
+ggplot(df, aes(display_name, high_estimate)) + geom_point()
+```
+
+```{r}
+#text
+#Display_name = The name that get's displayed to the USer on the Uber App
+#High_ estimte = The Hoghest Cost estimate that the user can be charged
+#The test shows the lowest to highest cost estimate for that ride.
+ggplot(df, aes(display_name, high_estimate)) + geom_text(aes(label = estimate))
+```
+
+```{r}
+#bar chart
+#Display_name = The name that get's displayed to the USer on the Uber App
+#High_ estimte = The Hoghest Cost estimate that the user can be charged
+ggplot(df, aes(display_name,high_estimate)) + geom_bar(stat = "identity")  #count of models by manufacturer (rows)
+```
+
+```{r}
+#Line Chart
+#Use Case - A rider decides to travel on all options available on an uber for five days each making it fifty days worth of travel. 
+#date= The date of the travel
+#estimte = The approximate cost that he had to pay. 
+ggplot(mydata, aes(date, estimate)) + geom_line()
+```
+
+```{r}
+#Area Chart
+#Use Case - A rider decides to travel on all options available on an uber for five days each making it fifty days worth of travel. 
+#date= The date of the travel
+#estimte = The approximate cost that he had to pay.
+ggplot(mydata, aes(date, estimate)) + geom_area()
+
+```
+
+```{r}
+#Dot Plot
+#high_estimte = The apprimate high costs available on the app.
+#Count - How many time that High cost occurs
+ggplot(df, aes(x = high_estimate)) + geom_dotplot(binwidth = 1)
+```
+
+```{r}
+#Histogram
+#high_estimte = The apprimate high costs available on the app.
+#Count - How many time that High cost occurs
+ggplot(df, aes(x = high_estimate)) + geom_histogram(binwidth = 1)
+```
+
+```{r}
+#Frequency Polygon
+#high_estimte = The apprimate high costs available on the app.
+#Count - How many time that High cost occurs
+ggplot(df, aes(x = high_estimate)) + geom_freqpoly(color = "blue")
+```
+
+```{r}
+#Box Plot
+#name: The name of the option displayed on the app
+#Estimate: The cost associated with that option. Range from lowest to highest cost estimate.
+ggplot(mydata, aes(name, estimate)) + geom_boxplot()
+```
+
+```{r}
+#Violin Plot
+#name: The name of the option displayed on the app
+#Estimate: The cost associated with that option. Range from lowest to highest cost estimate.
+#The shape remains the same as the data is evenly divided at a step of one and also with the same frequeny. 
+ggplot(mydata, aes(name, estimate)) + geom_violin()
+```
+
+Faceted Plot
+```{r warning=FALSE}
+#name: The name of the option displayed on the app
+#low_estimate: The lowest cost associated with that option.
+#high_estimate: The highest cost associated with that option.
+ggplot(df, aes(high_estimate, low_estimate , color = display_name)) +
+  geom_point() +
+  facet_grid(cols=vars(display_name))+
+  theme(legend.position="none")
+```
+MAP
+```{r}
+# GGMAP
+#circle: Represents the start point, denoted at the start point lat and long UCLA
+#rectangle: Represents the end point, denoted at the end point lat and long USC
+bb <- c(left = -125.39, bottom = 31.0, right = -113.5, top = 42.0)
+stamenmap.ca <- get_stamenmap(bbox = bb, zoom = 6, maptype = "toner")
+USC <- data.frame(label = "USC", lon = -120, lat = 35)
+UCLA <- data.frame(label = "UCLA", lon = -118.44, lat = 34.07)
+ggmap(stamenmap.ca) + geom_point(data = USC, aes(x = -120, y = 35), color="red", size=5, alpha=.5) + geom_point(data = UCLA, aes(x = -118, y = 34), shape = 17, color="red", size=5, alpha=.5)
+
+```
+Interactive Bar Plot
+```{r}
+f <- list(
+  family = "Courier New, monospace",
+  size = 18,
+  color = "#7f7f7f"
+)
+x <- list(
+  title = "Uber Options",
+  titlefont = f
+)
+y <- list(
+  title = "Highest Cost Estimate",
+  titlefont = f
+)
+p <- plot_ly( x = df$display_name,y = c(df$high_estimate),name = "Uber",type = "bar") %>%
+  layout(xaxis = x, yaxis = y)
+
+p
+```
+

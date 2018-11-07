@@ -1,0 +1,5 @@
+"0","#Area Chart"
+"0","#Use Case - A rider decides to travel on all options available on an uber for five days each making it fifty days worth of travel. "
+"0","#date= The date of the travel"
+"0","#estimte = The approximate cost that he had to pay."
+"0","ggplot(mydata, aes(date, estimate)) + geom_area()"

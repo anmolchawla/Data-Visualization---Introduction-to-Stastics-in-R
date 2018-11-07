@@ -1,0 +1,4 @@
+"0","#Dot Plot"
+"0","#high_estimte = The apprimate high costs available on the app."
+"0","#Count - How many time that High cost occurs"
+"0","ggplot(df, aes(x = high_estimate)) + geom_dotplot(binwidth = 1)"

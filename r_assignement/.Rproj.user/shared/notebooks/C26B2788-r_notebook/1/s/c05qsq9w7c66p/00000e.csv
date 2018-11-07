@@ -1,0 +1,7 @@
+"0","# Basic Plots"
+"0","df <- read.csv(""C:/Users/anmol/Desktop/INF 554/Homework 10/r_assignement/data/uber.csv"")"
+"0","mydata <- read.csv(""C:/Users/anmol/Desktop/INF 554/Homework 10/r_assignement/data/uber_data1.csv"")"
+"0","mydata['date']<-as.Date(mydata$date)"
+"0","library(ggplot2)"
+"0","library(plotly)"
+"0","library(ggmap)"

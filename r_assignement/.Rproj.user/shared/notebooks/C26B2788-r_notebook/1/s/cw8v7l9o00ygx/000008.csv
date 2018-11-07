@@ -1,0 +1,5 @@
+"0","#text"
+"0","#Display_name = The name that get's displayed to the USer on the Uber App"
+"0","#High_ estimte = The Hoghest Cost estimate that the user can be charged"
+"0","#The test shows the lowest to highest cost estimate for that ride."
+"0","ggplot(df, aes(display_name, high_estimate)) + geom_text(aes(label = estimate))"
