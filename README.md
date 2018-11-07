@@ -15,16 +15,16 @@ In return UBER API responded with the following fields
 
 1)Basic Stastical Plots that were included were:
 
-Scatterplot		(Uber name  vs highest cost estimate)
-Text	        	(Uber name  vs highest cost estimate)
-Bar chart		(Uber name  vs highest cost estimate)
-Line chart	        (Estimate vs date)
-Area chart		(Estimate vs date)
-Dot plot		(highest cost estimate)
-Histogram		(highest cost estimate)
-Frequency polygon 	(highest cost estimate)	
-Box plot	        (Uber name  vs Extrapolated cost estimate (eg: 8-10 became 8,9,10))
-Violin plot		(Uber name  vs Extrapolated cost estimate (eg: 8-10 became 8,9,10))
+ 1)Scatterplot		(Uber name  vs highest cost estimate)
+ 2)Text	        	(Uber name  vs highest cost estimate)
+ 3)Bar chart		(Uber name  vs highest cost estimate)
+ 4)Line chart	        (Estimate vs date)
+ 5)Area chart		(Estimate vs date)
+ 6)Dot plot		(highest cost estimate)
+ 7)Histogram		(highest cost estimate)
+ 8)Frequency polygon 	(highest cost estimate)	
+ 9)Box plot	        (Uber name  vs Extrapolated cost estimate (eg: 8-10 became 8,9,10))
+ 10)Violin plot		(Uber name  vs Extrapolated cost estimate (eg: 8-10 became 8,9,10))
 
 2) A faceted plot	(Uber name  -  highest cost estimate - lowest cost estimate)
 
